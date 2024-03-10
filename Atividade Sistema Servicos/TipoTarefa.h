@@ -2,40 +2,36 @@
 
 using namespace std;
 
-class Especialidade{
+class TipoTarefa{
 private:
     int id;
     string descricao;
-    int quantidade;
 public:
-    Especialidade(); //Construtor padrao
-    Especialidade(int, string, int); //Construtor parametrizado
+    TipoTarefa(); //Construtor padrao
+    TipoTarefa(int, string); //Construtor parametrizado
 
     //metodos geters
     int getId();
     string getDescricao();
-    int getQuantidade();
 
     //metodos seters
     void setId(int);
     void setDescricao(string);
-    void setQuantidade(int);
 
     void imprimir(); // impressao
     void leitura(); // leitura
 
 };
 
-Especialidade::Especialidade(){
+TipoTarefa::TipoTarefa(){
     this->id = 0;
     this->descricao = "";
-    this->quantidade = 0;
 }
 
-Especialidade::Especialidade(int id, string descricao, int quantidade){
+TipoTarefa::TipoTarefa(int id, string descricao){
     setId(id);
     setDescricao(descricao);
-    setQuantidade(quantidade);
+
     /*
     this->id = id;
     this->descricao = descricao;
@@ -43,19 +39,15 @@ Especialidade::Especialidade(int id, string descricao, int quantidade){
     */
 }
 
-int Especialidade::getId(){
+int TipoTarefa::getId(){
     return this->id;
 }
 
-string Especialidade::getDescricao(){
+string TipoTarefa::getDescricao(){
     return this->descricao;
 }
 
-int Especialidade::getQuantidade(){
-    return this->quantidade;
-}
-
-void Especialidade::setId(int id){
+void TipoTarefa::setId(int id){
     while(id <= 0){
         cout << "Id invalido \n Digite outro id:";
         cin >> id;
@@ -63,7 +55,7 @@ void Especialidade::setId(int id){
     this->id = id;
 }
 
-void Especialidade::setDescricao(string descricao){
+void TipoTarefa::setDescricao(string descricao){
     while (descricao == ""){
         cout << "Descricao invalida \n Digite outra descricao:";
         fflush(stdin);
@@ -73,26 +65,17 @@ void Especialidade::setDescricao(string descricao){
     this->descricao = descricao;
 }
 
-void Especialidade::setQuantidade(int quantidade){
-    while(quantidade <= 0){
-        cout << "Quantidade invalida \n Digite outra quantidade:";
-        cin >> quantidade;
-    };
-    this->quantidade = quantidade;
-}
-
-void Especialidade::imprimir(){
-    cout << "Imprimindo especialidade" << endl;
+void TipoTarefa::imprimir(){
+    cout << "Imprimindo Tipo Tarefa" << endl;
     cout << "Id: " << getId() << endl;
     cout << "Descricao: " << getDescricao() << endl;
-    cout << "Quantidade: " << getQuantidade() << endl;
 }
 
-void Especialidade::leitura(){
-    int id, quantidade;
+void TipoTarefa::leitura(){
+    int id;
     string descricao;
 
-    cout << "Lendo especialidade" << endl;
+    cout << "Lendo Tipo de Tarefa" << endl;
     cout << "Id: ";
     cin >> id;
     setId(id);
@@ -101,8 +84,5 @@ void Especialidade::leitura(){
     getline(cin,descricao);
     fflush(stdin);
     setDescricao(descricao);
-    cout << "Quantidade: ";
-    cin >> quantidade;
-    setQuantidade(quantidade);
 }
 
